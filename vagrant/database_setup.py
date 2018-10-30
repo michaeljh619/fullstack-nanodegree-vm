@@ -40,6 +40,16 @@ class MenuItem(Base):
                            ForeignKey('restaurant.id'))
     restaurant = relationship(Restaurant)
 
+    @property
+    def serialize(self):
+        # returns object data in serializeable format
+        return{
+            'name': self.name,
+            'description': self.description,
+            'id': self.id,
+            'price': self.price,
+            'course': self.course,
+        }
 
 # Sql Database setup footer
 engine = create_engine(
