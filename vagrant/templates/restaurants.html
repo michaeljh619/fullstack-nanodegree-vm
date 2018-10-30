@@ -1,0 +1,21 @@
+<html>
+<body>
+
+	<h1>Restaurants</h1>
+	<ul>
+	{% for r in restaurants %}
+		<li>
+				<strong>{{r.name}}</strong>
+				<br/> <a href="#">Edit Restaurant</a>
+				<br/> <a href="#">Delete Restaurant</a>
+				<br/><br/>
+		</li>
+	{% endfor %}
+
+	{% if restaurants.count == 0 %}
+	No restaurants have been added yet!
+	{% endif %}
+	</ul>
+
+</body>
+</html>

@@ -1,73 +1,87 @@
 <html>
-<head>
-	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
-	</head>
+<body>
 
-	
-	<body>
-	<div class = 'pane'>
-		<div class = 'header'>
-		<h1>{{ restaurant.name }}</h1>
-	</div>
+		<h1>{{restaurant.name}}</h1>
 
-	<a href = '{{url_for('newMenuItem', restaurant_id = restaurant.id) }}'>Create New Item</a>
+		<br/>
+		<a href="#">Create New Item</a>
+		<br/><br/>
 
 
-<div class = 'flash'>
-		      {% with messages = get_flashed_messages() %}
-      {% if messages %}
-          
-        <ul>
-        {% for message in messages %}
-            <li> <strong> {{ message }} </strong> </li>
-        {% endfor %}
-        </ul>
-        {% endif %}
-    {% endwith %}
+		<h2>Appetizers</h2>
+		<ul>
+			{% for i in appetizers %}
+				<li> 
+					<strong>{{ i.name }}</strong>
+					<br/> {{ i.description }}
+					<br/> {{ i.price }}
+					<br/> <a href="#">Edit</a>
+					<br/> <a href="#">Delete</a>
+					<br/><br/>
+				</li>
+			{% endfor %}
 
-</div>
-
-
-		{% for i in items %}
-    <div class = 'nameAndPrice'>
-		<span class = 'name'><p>{{i.name}}</p></span>
-
-		<span class = 'price'>
+			{% if appetizers.count == 0 %}
+				This menu does not feature any appetizers.
+			{% endif %}
+		</ul>
 
 
-		<p>{{i.price}} </p>
-	</span>
-	</div>
+		<h2>Entrees</h2>
+		<ul>
+			{% for i in entrees %}
+				<li> 
+					<strong>{{ i.name }}</strong>
+					<br/> {{ i.description }}
+					<br/> {{ i.price }}
+					<br/> <a href="#">Edit</a>
+					<br/> <a href="#">Delete</a>
+					<br/><br/>
+				</li>
+			{% endfor %}
 
-	
-	
-	<div class = 'description'>
-		<p>{{i.description}}</p>
-	</div>
-
-	
-	
-	<div class = "editdeletepane">
-
-	<a href='{{url_for('editMenuItem',restaurant_id = restaurant.id, menu_id=i.id)}}' >Edit</a>
-	<a href='{{url_for('deleteMenuItem', restaurant_id = restaurant.id, menu_id=i.id)}}' >
-	Delete</a>
-	</div>
-
+			{% if entrees.count == 0 %}
+				This menu does not feature any entrees.
+			{% endif %}
+		</ul>
 
 
+		<h2>Desserts</h2>
+		<ul>
+			{% for i in desserts %}
+				<li> 
+					<strong>{{ i.name }}</strong>
+					<br/> {{ i.description }}
+					<br/> {{ i.price }}
+					<br/> <a href="#">Edit</a>
+					<br/> <a href="#">Delete</a>
+					<br/><br/>
+				</li>
+			{% endfor %}
 
-		{% endfor %}
+			{% if desserts.count == 0 %}
+				This menu does not feature any desserts.
+			{% endif %}
+		</ul>
 
 
-		
-		
+		<h2>Beverages</h2>
+		<ul>
+			{% for i in beverages %}
+				<li> 
+					<strong>{{ i.name }}</strong>
+					<br/> {{ i.description }}
+					<br/> {{ i.price }}
+					<br/> <a href="#">Edit</a>
+					<br/> <a href="#">Delete</a>
+					<br/><br/>
+				</li>
+			{% endfor %}
 
-</div>
-</div>
-	</body>
+			{% if beverages.count == 0 %}
+				This menu does not feature any beverages.
+			{% endif %}
+		</ul>
 
-
-
-
+</body>
 </html>
