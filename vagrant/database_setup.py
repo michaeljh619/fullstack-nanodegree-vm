@@ -25,6 +25,12 @@ class Restaurant(Base):
     id = Column(Integer,
                 primary_key=True)
 
+    @property
+    def serialize(self):
+        return{
+            'name': self.name,
+        }
+
 
 # Create Menu Item Class (table)
 class MenuItem(Base):

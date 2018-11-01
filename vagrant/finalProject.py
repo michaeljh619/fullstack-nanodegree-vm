@@ -234,6 +234,39 @@ def deleteMenuItem(restaurant_id, menu_id):
         return render_template('deleteMenuItem.html',
                            restaurant_id=restaurant_id, item=item)
 
+'''
+API Endpoints
+'''
+@app.route('/restaurants/JSON')
+def restaurantsJSON():
+    # get restaurants
+    session = create_session()
+    restaurants = session.query(Restaurant).all()
+    session.close()
+    # return JSON file of restaurants
+    return jsonify(Restaurants=[r.serialize for r in restaurants])
+
+@app.route('/restaurant/<int:restaurant_id>/menu/JSON')
+def restaurantMenuJSON(restaurant_id):
+    # get restaurants
+    session = create_session()
+    items = session.query(MenuItem).filter_by(
+                    restaurant_id=restaurant_id)
+    session.close()
+    # return JSON file of restaurant's menu
+    return jsonify(MenuItems=[i.serialize for i in items])
+
+@app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/JSON')
+def restaurantMenuItemJSON(restaurant_id, menu_id):
+    # get restaurants
+    session = create_session()
+    item = session.query(MenuItem).filter_by(
+                    restaurant_id=restaurant_id,
+                    id=menu_id).one()
+    session.close()
+    # return JSON file of restaurant's menu
+    return jsonify(MenuItem=[item.serialize])
+
 # when run as main, run flask app
 if __name__ == '__main__':
     app.debug = True
