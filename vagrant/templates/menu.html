@@ -1,87 +1,87 @@
 <html>
+
+<head>
+	<link rel=stylesheet type=text/css href="{{url_for('static', filename='styles.css')}}">
+</head>
+
 <body>
-
+<div class='pane'>
+		
+		<div class="header">
 		<h1>{{restaurant.name}}</h1>
-
 		<br/>
 		<a href="{{url_for('newMenuItem', restaurant_id=restaurant.id)}}">Create New Item</a>
-		<br/><br/>
+		</div>
 
-
+	<div class="nameAndPrice">
 		<h2>Appetizers</h2>
-		<ul>
+		<dl>
 			{% for i in appetizers %}
-				<li> 
-					<strong>{{ i.name }}</strong>
-					<br/> {{ i.description }}
-					<br/> {{ i.price }}
-					<br/> <a href="{{url_for("editMenuItem", restaurant_id=restaurant.id, menu_id=i.id)}}">Edit</a>
-					<br/> <a href="{{url_for("deleteMenuItem", restaurant_id=restaurant.id, menu_id=i.id)}}">Delete</a>
-					<br/><br/>
-				</li>
+				<span class="name"><dt>{{ i.name }}</dt></span>
+				<br/><dd>{{ i.description }}</dd>
+				<span class="price"><br/><dd>{{ i.price }}</dd></span>
+				<a href="{{url_for("editMenuItem", restaurant_id=restaurant.id, menu_id=i.id)}}">Edit</a>
+				<a href="{{url_for("deleteMenuItem", restaurant_id=restaurant.id, menu_id=i.id)}}">Delete</a>
+				<br/><br/>
 			{% endfor %}
 
 			{% if appetizers.count == 0 %}
 				This menu does not feature any appetizers.
 			{% endif %}
-		</ul>
+		</dl>
 
 
 		<h2>Entrees</h2>
-		<ul>
+		<dl>
 			{% for i in entrees %}
-				<li> 
-					<strong>{{ i.name }}</strong>
-					<br/> {{ i.description }}
-					<br/> {{ i.price }}
-					<br/> <a href="{{url_for("editMenuItem", restaurant_id=restaurant.id, menu_id=i.id)}}">Edit</a>
-					<br/> <a href="{{url_for("deleteMenuItem", restaurant_id=restaurant.id, menu_id=i.id)}}">Delete</a>
-					<br/><br/>
-				</li>
+				<span class="name"><dt>{{ i.name }}</dt></span>
+				<br/><dd>{{ i.description }}</dd>
+				<span class="price"><br/><dd> {{ i.price }}</dd></span>
+				<a href="{{url_for("editMenuItem", restaurant_id=restaurant.id, menu_id=i.id)}}">Edit</a>
+				<br/> <a href="{{url_for("deleteMenuItem", restaurant_id=restaurant.id, menu_id=i.id)}}">Delete</a>
+				<br/><br/>
 			{% endfor %}
 
 			{% if entrees.count == 0 %}
 				This menu does not feature any entrees.
 			{% endif %}
-		</ul>
+		</dl>
 
 
 		<h2>Desserts</h2>
-		<ul>
+		<dl>
 			{% for i in desserts %}
-				<li> 
-					<strong>{{ i.name }}</strong>
-					<br/> {{ i.description }}
-					<br/> {{ i.price }}
-					<br/> <a href="{{url_for("editMenuItem", restaurant_id=restaurant.id, menu_id=i.id)}}">Edit</a>
-					<br/> <a href="{{url_for("deleteMenuItem", restaurant_id=restaurant.id, menu_id=i.id)}}">Delete</a>
-					<br/><br/>
-				</li>
+				<span class="name"><dt>{{ i.name }}</dt></span>
+				<br/><dd>{{ i.description }}</dd>
+				<span class="price"><dd>{{ i.price }}</dd></span>
+				<a href="{{url_for("editMenuItem", restaurant_id=restaurant.id, menu_id=i.id)}}">Edit</a>
+				<br/> <a href="{{url_for("deleteMenuItem", restaurant_id=restaurant.id, menu_id=i.id)}}">Delete</a>
+				<br/><br/>
 			{% endfor %}
 
 			{% if desserts.count == 0 %}
 				This menu does not feature any desserts.
 			{% endif %}
-		</ul>
+		</dl>
 
 
 		<h2>Beverages</h2>
-		<ul>
+		<dl>
 			{% for i in beverages %}
-				<li> 
-					<strong>{{ i.name }}</strong>
-					<br/> {{ i.description }}
-					<br/> {{ i.price }}
-					<br/> <a href="{{url_for("editMenuItem", restaurant_id=restaurant.id, menu_id=i.id)}}">Edit</a>
-					<br/> <a href="{{url_for("deleteMenuItem", restaurant_id=restaurant.id, menu_id=i.id)}}">Delete</a>
-					<br/><br/>
-				</li>
+				<span class="name"><dt>{{ i.name }}</dt></span>
+				<br/><dd>{{ i.description }}</dd>
+				<span class="price"><dd>{{ i.price }}</dd></span>
+				<a href="{{url_for("editMenuItem", restaurant_id=restaurant.id, menu_id=i.id)}}">Edit</a>
+				<br/> <a href="{{url_for("deleteMenuItem", restaurant_id=restaurant.id, menu_id=i.id)}}">Delete</a>
+				<br/><br/>
 			{% endfor %}
 
 			{% if beverages.count == 0 %}
 				This menu does not feature any beverages.
 			{% endif %}
-		</ul>
+		</dl>
+	</div>
 
+</div>
 </body>
 </html>

@@ -1,24 +1,31 @@
 <html>
-<body>
 
-	<h1>Restaurants</h1>
-	<a href="{{url_for('newRestaurant')}}">Create a new restaurant</a>
-	<br/>
-	<ul>
+<head>
+	<link rel=stylesheet type=text/css href="{{url_for('static', filename='styles.css')}}">
+</head>
+
+<body>
+<div class='pane'>
+
+	<div class='header'>
+		<h1>Restaurants</h1>
+		<br/><a href="{{url_for('newRestaurant')}}">Create a new restaurant</a>
+	</div>
+
+	<dl>
 	{% for r in restaurants %}
-		<li>
-				<strong>{{r.name}}</strong>
-				<br/> <a href="{{url_for('showMenu', restaurant_id=r.id)}}">Show Menu</a>
-				<br/> <a href="{{url_for('editRestaurant', restaurant_id=r.id)}}">Edit Restaurant</a>
-				<br/> <a href="{{url_for('deleteRestaurant', restaurant_id=r.id)}}">Delete Restaurant</a>
-				<br/><br/>
-		</li>
+				<dt>{{r.name}}</dt>
+				<dd><a href="{{url_for('showMenu', restaurant_id=r.id)}}">Show Menu</a></dd>
+				<dd><a href="{{url_for('editRestaurant', restaurant_id=r.id)}}">Edit Restaurant</a></dd>
+				<dd><a href="{{url_for('deleteRestaurant', restaurant_id=r.id)}}">Delete Restaurant</a></dd>
+				<br/>
 	{% endfor %}
 
 	{% if restaurants.count == 0 %}
-	No restaurants have been added yet!
+	<p>No restaurants have been added yet!</p>
 	{% endif %}
-	</ul>
+	</dl>
 
+</div>
 </body>
 </html>
